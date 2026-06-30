@@ -723,7 +723,57 @@ main {
 /* mobile spacing tweak */
 @media (max-width: 768px) {
   .contact-card {
-    padding: 25px;
+    text-align: left;
+    /* IMPORTANT FIX */
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 20px;
+  }
+
+  /* inputs */
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 14px;
+
+    border-radius: 8px;
+    border: 1px solid #333;
+
+    background: #111;
+    color: white;
+
+    font-size: 14px;
+  }
+
+  /* focus glow */
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+  }
+
+  /* button */
+  .contact-form button {
+    padding: 12px 16px;
+    border-radius: 8px;
+
+    background: #1a1a1a;
+    border: 1px solid #444;
+
+    color: white;
+    cursor: pointer;
+
+    transition: 0.2s ease;
+  }
+
+  .contact-form button:hover {
+    background: #222;
+    border-color: #fff;
+    transform: translateY(-2px);
   }
 }
 

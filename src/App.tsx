@@ -72,7 +72,7 @@ function App() {
 
             <div className="about-content">
               <div className="about-title"></div>
-               <h3>About Us</h3>
+              <h3>About Us</h3>
               <p>
                 We are Dystopia Games LTD, a creative game studio focused on building immersive
                 digital experiences. We turn ideas into interactive realities through design,
@@ -296,50 +296,50 @@ function App() {
         )}
 
         {/* CONTACT */}
-<section id="contact" className="page-section">
-  <div className="contact-card">
+        <section id="contact" className="page-section">
+          <div className="contact-card">
 
-    <h2>Contact Us</h2>
+            <h2>Contact Us</h2>
 
-    <p className="contact-text">
-      Got an idea, collaboration, or just want to reach out?
-    </p>
+            <p className="contact-text">
+              Got an idea, collaboration, or just want to reach out?
+            </p>
 
-    <form
-      className="contact-form"
-      action="https://formspree.io/f/YOUR_FORM_ID"
-      method="POST"
-    >
+            <form
+              className="contact-form"
+              action="https://formspree.io/f/YOUR_FORM_ID"
+              method="POST"
+            >
 
-      <input
-        type="text"
-        name="name"
-        placeholder="Your Name"
-        required
-      />
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required
+              />
 
-      <input
-        type="email"
-        name="email"
-        placeholder="Your Email"
-        required
-      />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required
+              />
 
-      <textarea
-        name="message"
-        placeholder="Your Message"
-        rows={6}
-        required
-      />
+              <textarea
+                name="message"
+                placeholder="Your Message"
+                rows={6}
+                required
+              />
 
-      <button type="submit" className="contact-button">
-        Send Message
-      </button>
+              <button type="submit" className="contact-button">
+                Send Message
+              </button>
 
-    </form>
+            </form>
 
-  </div>
-</section>
+          </div>
+        </section>
 
       </main>
     </>
