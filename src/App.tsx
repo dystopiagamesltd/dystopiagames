@@ -27,6 +27,9 @@ function App() {
 
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
+  // NEW: popup state
+  const [popup, setPopup] = useState<"success" | "error" | null>(null)
+
   return (
     <>
       {/* NAVBAR */}
@@ -136,7 +139,6 @@ function App() {
 
         {/* GAMES */}
         <section id="games" className="page-section">
-
           <div className="games-wrapper">
 
             <h2 className="games-title">Our Games</h2>
@@ -158,7 +160,6 @@ function App() {
 
             </div>
 
-            {/* SCREENSHOTS */}
             <div className="game-screenshots">
 
               <h3 className="screenshots-title">Screenshots</h3>
@@ -185,19 +186,11 @@ function App() {
         {activeIndex !== null && (
           <div className="lightbox">
 
-            <div
-              className="lightbox-backdrop"
-              onClick={() => setActiveIndex(null)}
-            />
+            <div className="lightbox-backdrop" onClick={() => setActiveIndex(null)} />
 
             <div className="lightbox-content">
 
-              <button
-                className="lightbox-close"
-                onClick={() => setActiveIndex(null)}
-              >
-                ✕
-              </button>
+              <button className="lightbox-close" onClick={() => setActiveIndex(null)}>✕</button>
 
               <button
                 className="nav left"
@@ -224,11 +217,10 @@ function App() {
               </button>
 
             </div>
-
           </div>
         )}
 
-        {/* CONTACT (FIXED) */}
+        {/* CONTACT (NEW FIXED VERSION) */}
         <section id="contact" className="page-section">
           <div className="contact-card">
 
@@ -240,42 +232,45 @@ function App() {
 
             <form
               className="contact-form"
-              action="https://api.staticforms.dev/submit"
-              method="POST"
+              onSubmit={async (e) => {
+                e.preventDefault()
+
+                const form = e.currentTarget
+
+                const data = {
+                  name: (form.elements.namedItem("name") as HTMLInputElement).value,
+                  email: (form.elements.namedItem("email") as HTMLInputElement).value,
+                  message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+                  apiKey: "sf_d6302a6d3119e42d35ec20d3",
+                  subject: "New message from Dystopia Games website"
+                }
+
+                try {
+                  const res = await fetch("https://api.staticforms.dev/submit", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                  })
+
+                  const result = await res.json()
+
+                  if (result.success) {
+                    setPopup("success")
+                    form.reset()
+                  } else {
+                    setPopup("error")
+                  }
+                } catch {
+                  setPopup("error")
+                }
+              }}
             >
 
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                required
-              />
-
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                required
-              />
-
-              <textarea
-                name="message"
-                placeholder="Your Message"
-                rows={6}
-                required
-              />
-
-              <input
-                type="hidden"
-                name="apiKey"
-                value="sf_d6302a6d3119e42d35ec20d3"
-              />
-
-              <input
-                type="hidden"
-                name="subject"
-                value="New message from Dystopia Games website"
-              />
+              <input type="text" name="name" placeholder="Your Name" required />
+              <input type="email" name="email" placeholder="Your Email" required />
+              <textarea name="message" placeholder="Your Message" rows={6} required />
 
               <button type="submit" className="contact-button">
                 Send Message
@@ -285,6 +280,28 @@ function App() {
 
           </div>
         </section>
+
+        {/* POPUP */}
+        {popup && (
+          <div className="popup-overlay" onClick={() => setPopup(null)}>
+            <div className={`popup-box ${popup}`} onClick={(e) => e.stopPropagation()}>
+
+              {popup === "success" ? (
+                <>
+                  <h3>Message Sent ✔</h3>
+                  <p>Thanks! We’ll get back to you soon.</p>
+                </>
+              ) : (
+                <>
+                  <h3>Error</h3>
+                  <p>Please try again later.</p>
+                </>
+              )}
+
+              <button onClick={() => setPopup(null)}>Close</button>
+            </div>
+          </div>
+        )}
 
       </main>
     </>
