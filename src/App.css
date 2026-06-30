@@ -217,18 +217,16 @@ main {
   z-index: 1;
 }
 
-@media (max-width: 768px) {
-  .about-title {
-    position: static;
-    transform: none;
-    text-align: center;
-    margin-top: 10px;
-  }
+.about-title h3 {
+  color: white;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
 
   .about-image {
     aspect-ratio: auto;
   }
-}
+
 
 /* ================= CONTENT ================= */
 .about-content {

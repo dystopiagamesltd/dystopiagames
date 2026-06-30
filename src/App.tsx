@@ -70,7 +70,7 @@ function App() {
             </div>
 
             <div className="about-content">
-
+              <div className="about-title"></div>
                <h3>About Us</h3>
               <p>
                 We are Dystopia Games LTD, a creative game studio focused on building immersive
