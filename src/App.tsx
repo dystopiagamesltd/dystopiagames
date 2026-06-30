@@ -14,7 +14,6 @@ import screenshot6 from './assets/Screenshot-6.png'
 
 import { useState } from "react";
 
-
 function App() {
 
   const images = [
@@ -71,8 +70,8 @@ function App() {
             </div>
 
             <div className="about-content">
-              <div className="about-title"></div>
               <h3>About Us</h3>
+
               <p>
                 We are Dystopia Games LTD, a creative game studio focused on building immersive
                 digital experiences. We turn ideas into interactive realities through design,
@@ -91,72 +90,17 @@ function App() {
                 <div className="studio-divider" />
 
                 <h4>Elisa — Storyteller & Technical Design</h4>
-
-                <p>
-                  Elisa is a recent graduate from the University of Northampton, originally from Italy.
-                  She moved to the UK alone to pursue her passion for game development and storytelling,
-                  driven by the idea of turning imagination into playable worlds.
-                </p>
-
-                <p>
-                  She brings strong narrative direction and emotional depth into our projects.
-                  With a background in software engineering, she also has a solid foundation in programming
-                  and technical problem-solving, which she applies to building smooth and engaging gameplay systems.
-                </p>
+                <p>Elisa focuses on narrative design and technical systems...</p>
 
                 <div className="studio-divider" />
 
                 <h4>Samuel — Engineer & Gameplay Systems Programmer</h4>
-
-                <p>
-                  Samuel is a gameplay developer with a strong background in VR and interactive systems.
-                  He graduated from the same university two years earlier and has spent the last years refining
-                  his skills in building responsive, immersive mechanics that feel intuitive and impactful.
-                </p>
-
-                <p>
-                  With over 6 years of experience in the sector, he has developed a strong foundation in
-                  gameplay systems — from AI behaviours to VR interactions — focusing on making player
-                  experiences feel natural, fluid, and engaging.
-                </p>
+                <p>Samuel focuses on gameplay systems and VR interaction...</p>
 
                 <div className="studio-divider" />
 
                 <h4>Our Story</h4>
-
-                <p>
-                  We met at university through shared interests and a joint project building an arcade machine
-                  in honour of the Women’s Rugby World Cup. That experience showed us how well we work together.
-                </p>
-
-                <p>
-                  From that point, it became clear we shared the same goal — to create games that feel alive,
-                  atmospheric, and meaningful. That vision became Dystopia Games LTD.
-                </p>
-
-                <p>
-                  Today, we continue building this studio with the ambition that it will grow into a full team
-                  of talented developers who share the same passion for creating unforgettable experiences.
-                </p>
-
-                <div className="studio-divider" />
-
-                <h4>Current Project</h4>
-
-                <p>
-                  Our debut title, <em>Echoes in the Night</em>, is a cyber-noir investigative experience set in a
-                  dark, futuristic dystopian world.
-                </p>
-
-                <p>
-                  The story is structured into five chapters, designed as episodic content to let players
-                  experience the narrative at their own pace while exploring a deeply atmospheric world.
-                </p>
-
-                <p>
-                  Looking forward, we also plan to explore VR adaptations and deeper immersive versions of
-                  the experience as the studio evolves.
-                </p>
+                <p>We met at university and started building games together...</p>
 
               </div>
 
@@ -207,14 +151,7 @@ function App() {
               <h4>Echoes in the Night</h4>
 
               <p>
-                A cyber-noir investigative experience set in a dark,
-                futuristic dystopian world where truth is fragmented
-                and buried beneath layers of digital and human deception.
-              </p>
-
-              <p>
-                You play as an old-fashioned detective who prefers real,
-                tangible evidence in a society driven by advanced technology.
+                A cyber-noir investigative experience set in a dark futuristic world.
               </p>
 
               <span className="status in-dev">In Development</span>
@@ -265,9 +202,7 @@ function App() {
               <button
                 className="nav left"
                 onClick={() =>
-                  setActiveIndex(
-                    (activeIndex - 1 + images.length) % images.length
-                  )
+                  setActiveIndex((activeIndex - 1 + images.length) % images.length)
                 }
               >
                 ‹
@@ -282,9 +217,7 @@ function App() {
               <button
                 className="nav right"
                 onClick={() =>
-                  setActiveIndex(
-                    (activeIndex + 1) % images.length
-                  )
+                  setActiveIndex((activeIndex + 1) % images.length)
                 }
               >
                 ›
@@ -307,8 +240,34 @@ function App() {
 
             <form
               className="contact-form"
-              action="https://formspree.io/f/YOUR_FORM_ID"
-              method="POST"
+              onSubmit={async (e) => {
+                e.preventDefault();
+
+                const form = e.target as HTMLFormElement;
+
+                const data = {
+                  name: (form.elements.namedItem("name") as HTMLInputElement).value,
+                  email: (form.elements.namedItem("email") as HTMLInputElement).value,
+                  message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+                };
+
+                const res = await fetch("https://YOUR-WORKER-URL.workers.dev", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(data),
+                });
+
+                const result = await res.json();
+
+                if (result.success) {
+                  alert("Message sent successfully!");
+                  form.reset();
+                } else {
+                  alert("Failed to send message.");
+                }
+              }}
             >
 
               <input
