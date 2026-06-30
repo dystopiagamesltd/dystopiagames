@@ -217,15 +217,17 @@ main {
   z-index: 1;
 }
 
-.about-title {
-  position: absolute;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
+@media (max-width: 768px) {
+  .about-title {
+    position: static;
+    transform: none;
+    text-align: center;
+    margin-top: 10px;
+  }
 
-  margin: 0;
-  font-size: 34px;
+  .about-image {
+    aspect-ratio: auto;
+  }
 }
 
 /* ================= CONTENT ================= */

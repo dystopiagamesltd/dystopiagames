@@ -72,6 +72,7 @@ function App() {
             <div className="about-content">
 
               <p>
+                About us
                 We are Dystopia Games LTD, a creative game studio focused on building immersive
                 digital experiences. We turn ideas into interactive realities through design,
                 storytelling, and gameplay.
