@@ -12,7 +12,8 @@ import screenshot4 from './assets/Screenshot-4.png'
 import screenshot5 from './assets/Screenshot-5.png'
 import screenshot6 from './assets/Screenshot-6.png'
 
-import { useState } from 'react'
+import { useState } from "react";
+
 
 function App() {
 
@@ -295,26 +296,50 @@ function App() {
         )}
 
         {/* CONTACT */}
-        <section id="contact" className="page-section">
+<section id="contact" className="page-section">
+  <div className="contact-card">
 
-          <div className="contact-card">
+    <h2>Contact Us</h2>
 
-            <h2>Contact Us</h2>
+    <p className="contact-text">
+      Got an idea, collaboration, or just want to reach out?
+    </p>
 
-            <p className="contact-text">
-              Got an idea, collaboration, or just want to reach out?
-            </p>
+    <form
+      className="contact-form"
+      action="https://formspree.io/f/YOUR_FORM_ID"
+      method="POST"
+    >
 
-            <a
-              className="contact-button"
-              href="mailto:dystopiagamesltd@gmail.com"
-            >
-              Send Email
-            </a>
+      <input
+        type="text"
+        name="name"
+        placeholder="Your Name"
+        required
+      />
 
-          </div>
+      <input
+        type="email"
+        name="email"
+        placeholder="Your Email"
+        required
+      />
 
-        </section>
+      <textarea
+        name="message"
+        placeholder="Your Message"
+        rows={6}
+        required
+      />
+
+      <button type="submit" className="contact-button">
+        Send Message
+      </button>
+
+    </form>
+
+  </div>
+</section>
 
       </main>
     </>

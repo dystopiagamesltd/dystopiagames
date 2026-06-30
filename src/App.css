@@ -1,5 +1,6 @@
 /* ================= GLOBAL ================= */
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -134,9 +135,17 @@ main {
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 /* ================= HERO LOGO ================= */
@@ -154,9 +163,7 @@ main {
 
 .hero-logo:hover {
   filter:
-    drop-shadow(0 0 10px rgba(255, 255, 255, 0.6))
-    drop-shadow(0 0 25px rgba(255, 255, 255, 0.4))
-    drop-shadow(0 0 45px rgba(255, 255, 255, 0.25));
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 45px rgba(255, 255, 255, 0.25));
 
   transform: scale(1.03);
 }
@@ -213,7 +220,7 @@ main {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0, 0, 0, 0.45);
   z-index: 1;
 }
 
@@ -223,9 +230,9 @@ main {
   font-size: 22px;
 }
 
-  .about-image {
-    aspect-ratio: auto;
-  }
+.about-image {
+  aspect-ratio: auto;
+}
 
 
 /* ================= CONTENT ================= */
@@ -311,6 +318,7 @@ main {
 .linkedin-button:hover {
   background: #222;
 }
+
 .contact-card {
   max-width: 600px;
   width: 100%;
@@ -376,6 +384,7 @@ main {
   background: #222;
   transform: scale(1.03);
 }
+
 .games-wrapper {
   max-width: 900px;
   width: 100%;
@@ -440,6 +449,7 @@ main {
   border: 1px solid #333;
   color: #4da3ff;
 }
+
 /* ================= SCREENSHOTS ================= */
 .screenshots-grid {
   display: grid;
@@ -463,8 +473,8 @@ main {
   transform: scale(1.05);
   border-color: #4da3ff;
   box-shadow:
-    0 0 12px rgba(77,163,255,0.4),
-    0 0 30px rgba(77,163,255,0.2);
+    0 0 12px rgba(77, 163, 255, 0.4),
+    0 0 30px rgba(77, 163, 255, 0.2);
 }
 
 .screenshot-box img {
@@ -537,8 +547,13 @@ main {
   cursor: pointer;
 }
 
-.nav.left { left: -60px; }
-.nav.right { right: -60px; }
+.nav.left {
+  left: -60px;
+}
+
+.nav.right {
+  right: -60px;
+}
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
@@ -546,6 +561,7 @@ main {
     grid-template-columns: 1fr;
   }
 }
+
 /* ================= STUDIO SECTION IMPROVEMENT ================= */
 
 .studio-section {
@@ -584,12 +600,10 @@ main {
 .studio-divider {
   width: 100%;
   height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(137, 140, 143, 0.4),
-    transparent
-  );
+  background: linear-gradient(to right,
+      transparent,
+      rgba(137, 140, 143, 0.4),
+      transparent);
 
   margin: 16px 0;
   opacity: 0.6;
@@ -637,6 +651,82 @@ main {
   object-fit: cover;
 }
 
+/* ================= CONTACT FORM  ================= */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+  text-align: left;
+}
+
+/* inputs + textarea unified style */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+
+  background: #0f0f0f;
+  color: white;
+
+  font-size: 14px;
+  font-family: inherit;
+
+  outline: none;
+
+  transition: 0.2s ease;
+}
+
+/* focus glow (matches your screenshot hover glow style) */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #ffffff;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+/* textarea resize control */
+.contact-form textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+/* button upgrade (matches your existing style but stronger) */
+.contact-form button {
+  padding: 12px 16px;
+
+  border-radius: 8px;
+  border: 1px solid #333;
+
+  background: #151515;
+  color: white;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+/* hover effect consistent with your UI language */
+.contact-form button:hover {
+  background: #1f1f1f;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.15);
+}
+
+/* mobile spacing tweak */
+@media (max-width: 768px) {
+  .contact-card {
+    padding: 25px;
+  }
+}
+
 /* ================= LIGHTBOX ================= */
 .lightbox {
   position: fixed;
@@ -650,7 +740,7 @@ main {
 .lightbox-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.75);
+  background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(10px);
 }
 
@@ -687,5 +777,10 @@ main {
   cursor: pointer;
 }
 
-.nav.left { left: -60px; }
-.nav.right { right: -60px; }
+.nav.left {
+  left: -60px;
+}
+
+.nav.right {
+  right: -60px;
+}
