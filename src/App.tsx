@@ -228,7 +228,7 @@ function App() {
           </div>
         )}
 
-        {/* CONTACT */}
+        {/* CONTACT (FIXED) */}
         <section id="contact" className="page-section">
           <div className="contact-card">
 
@@ -240,34 +240,8 @@ function App() {
 
             <form
               className="contact-form"
-              onSubmit={async (e) => {
-                e.preventDefault();
-
-                const form = e.target as HTMLFormElement;
-
-                const data = {
-                  name: (form.elements.namedItem("name") as HTMLInputElement).value,
-                  email: (form.elements.namedItem("email") as HTMLInputElement).value,
-                  message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
-                };
-
-                const res = await fetch("https://YOUR-WORKER-URL.workers.dev", {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify(data),
-                });
-
-                const result = await res.json();
-
-                if (result.success) {
-                  alert("Message sent successfully!");
-                  form.reset();
-                } else {
-                  alert("Failed to send message.");
-                }
-              }}
+              action="https://api.staticforms.dev/submit"
+              method="POST"
             >
 
               <input
@@ -289,6 +263,18 @@ function App() {
                 placeholder="Your Message"
                 rows={6}
                 required
+              />
+
+              <input
+                type="hidden"
+                name="apiKey"
+                value="sf_d6302a6d3119e42d35ec20d3"
+              />
+
+              <input
+                type="hidden"
+                name="subject"
+                value="New message from Dystopia Games website"
               />
 
               <button type="submit" className="contact-button">
