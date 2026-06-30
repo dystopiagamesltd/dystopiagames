@@ -1,45 +1,66 @@
 /* ================= GLOBAL ================= */
 html,
 body {
-  position: relative;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #0f0f0f;
+  color: white;
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  overflow-x: hidden;
 }
 
-/* LEFT NEON EDGE */
-body::before {
-  content: "";
+/* ================= NEON EDGE FRAME (SOFT GRADIENT VERSION) ================= */
+
+.neon-frame {
   position: fixed;
-  top: 0;
+  inset: 0;
+  pointer-events: none;
+
+  /* IMPORTANT:
+     navbar is 1000, so this stays behind it */
+  z-index: 5;
+}
+
+/* LEFT EDGE (thick + smooth fade) */
+.neon-frame::before {
+  content: "";
+  position: absolute;
   left: 0;
-  width: 6px;
-  height: 100vh;
-  background: white;
-  box-shadow:
-    0 0 10px rgba(255, 255, 255, 0.6),
-    0 0 25px rgba(255, 255, 255, 0.4),
-    0 0 60px rgba(255, 255, 255, 0.2);
-  filter: blur(1px);
+  top: 0;
+  height: 100%;
+  width: 120px;
+
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0)
+  );
+
+  filter: blur(6px);
   opacity: 0.9;
-  z-index: 9999;
-  pointer-events: none;
 }
 
-/* RIGHT NEON EDGE */
-body::after {
+/* RIGHT EDGE (mirror) */
+.neon-frame::after {
   content: "";
-  position: fixed;
-  top: 0;
+  position: absolute;
   right: 0;
-  width: 6px;
-  height: 100vh;
-  background: white;
-  box-shadow:
-    0 0 10px rgba(255, 255, 255, 0.6),
-    0 0 25px rgba(255, 255, 255, 0.4),
-    0 0 60px rgba(255, 255, 255, 0.2);
-  filter: blur(1px);
+  top: 0;
+  height: 100%;
+  width: 120px;
+
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0)
+  );
+
+  filter: blur(6px);
   opacity: 0.9;
-  z-index: 9999;
-  pointer-events: none;
 }
 
 /* ================= NAVBAR ================= */

@@ -48,7 +48,7 @@ function App() {
       </nav>
 
       <main>
-
+        <div className="neon-frame" />
         {/* HOME */}
         <section id="home" className="hero">
           <video className="hero-video" autoPlay loop muted playsInline>
